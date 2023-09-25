@@ -261,7 +261,7 @@ rec
         then
           builtins.replaceStrings
             (builtins.concatMap (x: [ "\$${x.key}" "\${${x.key}}" ]) replacements)
-            (builtins.concatMap (x: [ "\$${x.value}" "\${${x.value}}" ]) replacements)
+            (builtins.concatMap (x: [ x.value x.value ]) replacements)
             x
         else if builtins.isList x
         then map go x
